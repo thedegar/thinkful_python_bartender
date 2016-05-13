@@ -18,6 +18,11 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+names = {
+    "adjective": ["Fluffy","Gallant","Rebellious","Sassy","Malicious"],
+    "noun": ["Sea-Dog","Batman","Knight","Nail","Doormat"],
+}
+
 def ask(questions):
     """Asks all questions in a dictionary and returns the answers in a dictionary"""
     answers = {}
@@ -30,13 +35,20 @@ def ask(questions):
     return answers
 
 def makeDrink(ingredients, preferences):
-    """Takes preferences and ingredients, picks random ingredient from each preference and returns a drink"""
+    """Takes preferences and ingredients, picks random ingredient from each preference and returns a drink (name and ingredients)"""
     import random
-    drink = []
+    drinkName = random.choice(names["adjective"]) + " " + random.choice(names["noun"])
+    drink = {
+        "name": drinkName,
+        "ingredients": [],
+    }
+    
     for preference in preferences:
         if preferences[preference] == True:
-            drink.append(random.choice(ingredients[preference]))
-    print(drink)
+            drink["ingredients"].append(random.choice(ingredients[preference]))
+    
+    return drink
     
 if __name__ == '__main__':
-    makeDrink(ingredients,ask(questions))
+    drink = makeDrink(ingredients,ask(questions))
+    print("Here is your {} with {}.".format(drink["name"],drink["ingredients"]))
