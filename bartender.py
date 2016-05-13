@@ -38,4 +38,5 @@ def makeDrink(ingredients, preferences):
             drink.append(random.choice(ingredients[preference]))
     print(drink)
     
-makeDrink(ingredients,ask(questions))
+if __name__ == '__main__':
+    makeDrink(ingredients,ask(questions))
