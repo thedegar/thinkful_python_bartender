@@ -50,5 +50,11 @@ def makeDrink(ingredients, preferences):
     return drink
     
 if __name__ == '__main__':
-    drink = makeDrink(ingredients,ask(questions))
-    print("Here is your {} with {}.".format(drink["name"],drink["ingredients"]))
+    done = False
+    while done == False:
+        drink = makeDrink(ingredients,ask(questions))
+        print("Here is your {} with {}.".format(drink["name"],drink["ingredients"]))
+        another = input("Would you like another drink (Y/N)?  ")
+        if another.lower() == "n" or another.lower() == "no":
+            done = True
+            print("Thank you for coming in!")
